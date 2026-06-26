@@ -2,6 +2,8 @@ import multer from "multer";
 import path from "path";
 import {v4 as uuidv4 } from "uuid";
 
+const MAX_FILE_SIZE_BYTES = 50 * 1024 * 1024
+
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, "./uploads");
@@ -13,6 +15,12 @@ const storage = multer.diskStorage({
     cb(null, newName);
   },
 });
+
+//fillter
 export const upload = multer({
   storage: storage,
+  limits:{
+    fieldSize : MAX_FILE_SIZE_BYTES
+  },
 });
+
