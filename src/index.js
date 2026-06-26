@@ -21,13 +21,13 @@ app.get("/", (req,res)=>{
     res.send("Api Is Working")
 });
 
-app.post("/uploads/file",upload.single("image"),(req,res)=>{
+app.post("/api/v1/uploads/file",upload.single("image"),(req,res)=>{
     return res.json({
         message : "File Uploaded ",data : req.file
     });
 });
 
-app.post("/uploads/files",upload.array("images", 10),(req,res)=>{
+app.post("/api/v1/uploads/files",upload.array("images", 10),(req,res)=>{
         return res.json({
         message : "Files Uploaded ", data : req.files
     });
